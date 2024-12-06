@@ -19,7 +19,7 @@ class MedicaidPipelineStack(Stack):
                                 synth=ShellStep("Synth",
                                                 input=CodePipelineSource.connection(repo_string="SaiTejaVarasiDev/modmedicaid-aws-codepipeline",branch="main",connection_arn="arn:aws:codeconnections:ap-south-1:443370714691:connection/8b2ccefc-6bdc-442b-8c7c-5d26f632a991"),
                                 commands=["npm install -g aws-cdk",
-                                        #   "python -m pip install -r requirements.txt",
+                                          "python -m pip install -r requirements.txt",
                                           "cdk synth",
                                           r"mkdir common\python\lib\python3.11\site-packages",
                                           r"pip install -r lambda\requirements.txt --target common\python\lib\python3.11\site-packages",
