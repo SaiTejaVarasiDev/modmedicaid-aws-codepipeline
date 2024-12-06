@@ -3,11 +3,11 @@ import os
 
 import aws_cdk as cdk
 
-from medicaid_pipeline.medicaid_pipeline import MediciaidPipelineStage
+from medicaid_pipeline.medicaid_pipeline import MedicaidPipelineStack
 
 
 app = cdk.App()
-MediciaidPipelineStage(app, "MODMedicaidStack",
+MedicaidPipelineStack(app, "MedicaidPipelineStack",
     # If you don't specify 'env', this stack will be environment-agnostic.
     # Account/Region-dependent features and context lookups will not work,
     # but a single synthesized template can be deployed anywhere.
