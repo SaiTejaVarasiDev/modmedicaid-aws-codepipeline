@@ -3,7 +3,6 @@ import os
 
 import aws_cdk as cdk
 
-from health_connector_cdk.health_connector_cdk_stack import HealthConnectorCdkStack
 from medicaid_pipeline.medicaid_pipeline import MediciaidPipelineStage
 
 
