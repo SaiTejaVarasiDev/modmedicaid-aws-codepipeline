@@ -3,7 +3,7 @@ from aws_cdk import (
     Environment,
 )
 from constructs import Construct
-from aws_cdk.pipelines import CodePipeline, CodePipelineSource, ShellStep
+from aws_cdk.pipelines import CodePipeline, CodePipelineSource, ShellStep, Step
 from medicaid_stage.medicaid_stage import MediciaidPipelineStage
 
 
@@ -21,22 +21,27 @@ class MedicaidPipelineStack(Stack):
                                 commands=["npm install -g aws-cdk",
                                           "python -m pip install -r requirements.txt",
                                           "cdk synth",
-                                          "mkdir -p common/python/lib/python3.11/site-packages",
-                                          "pip install -r lambda/requirements.txt --target common/python/lib/python3.11/site-packages",
-                                          "ls -R common",
-                                          "cd common",
-                                          "pwd",
-                                          "zip -r python.zip python",
-                                          "cd ..",
-                                          "cd common",
-                                          "ls",
-                                          "pwd",
-                                          "cd .."
                                           ]
                                 )
                                 
                                 )
-        
+        pre_deploy_step = ShellStep(
+            "PreDeploy",
+            commands=[
+                "echo 'Running pre-deployment tasks...'",
+                "mkdir -p common/python/lib/python3.11/site-packages",
+                "pip install -r lambda/requirements.txt --target common/python/lib/python3.11/site-packages",
+                "ls -R common",
+                "cd common",
+                "pwd",
+                "zip -r python.zip python",
+                "cd ..",
+                "cd common",
+                "ls",
+                "pwd",
+                "cd .."
+            ]
+        )
         pipeline.add_stage(MediciaidPipelineStage(self, "dev"
                                         #  env=Environment()
-                                        ))
+                                        ),pre=[pre_deploy_step])
