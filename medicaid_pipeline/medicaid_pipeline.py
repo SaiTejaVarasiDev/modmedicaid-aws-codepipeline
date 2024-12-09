@@ -26,12 +26,12 @@ class MedicaidPipelineStack(Stack):
                                           "pip install -r lambda/requirements.txt --target common/python/lib/python3.11/site-packages",
                                           "cd common",
                                           "pwd",
-                                          "zip python.zip python",
+                                          "zip -r python.zip python",
                                           "cd ..",
-                                          "cd common/python/lib/python3.11/site-packages",
+                                          "cd common",
                                           "ls",
                                           "pwd",
-                                          "cd ../../../../.."
+                                          "cd .."
                                           ]
                                 )
                                 
