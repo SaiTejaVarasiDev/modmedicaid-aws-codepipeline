@@ -21,12 +21,14 @@ class MedicaidPipelineStack(Stack):
                                 commands=["npm install -g aws-cdk",
                                           "python -m pip install -r requirements.txt",
                                           "cdk synth",
-                                          "mkdir common\\python\\lib\\python3.11\\site-packages",
-                                          "tree"
-                                          "pip install -r lambda\\requirements.txt --target common\\python\\lib\\python3.11\\site-packages",
+                                          "mkdir -p common/python/lib/python3.11/site-packages",
+                                          "ls",
+                                          "pip install -r lambda/requirements.txt --target common/python/lib/python3.11/site-packages",
                                           "cd common",
-                                          "tar.exe -a -cf python.zip python",
-                                          "cd .."
+                                          "pwd",
+                                          "zip python.zip python",
+                                          "cd ..",
+                                          "pwd"
                                           ]
                                 )
                                 
