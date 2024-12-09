@@ -28,6 +28,10 @@ class MedicaidPipelineStack(Stack):
                                           "pwd",
                                           "zip python.zip python",
                                           "cd .."
+                                          "cd common/python/lib/python3.11/site-packages",
+                                          "ls",
+                                          "pwd",
+                                          "cd ../../../../.."
                                           ]
                                 )
                                 
