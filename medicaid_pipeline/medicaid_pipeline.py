@@ -22,6 +22,7 @@ class MedicaidPipelineStack(Stack):
                                           "python -m pip install -r requirements.txt",
                                           "cdk synth",
                                           "mkdir common\\python\\lib\\python3.11\\site-packages",
+                                          "tree"
                                           "pip install -r lambda\\requirements.txt --target common\\python\\lib\\python3.11\\site-packages",
                                           "cd common",
                                           "tar.exe -a -cf python.zip python",
