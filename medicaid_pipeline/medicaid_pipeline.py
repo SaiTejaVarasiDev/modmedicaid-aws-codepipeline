@@ -27,8 +27,7 @@ class MedicaidPipelineStack(Stack):
                                           "cd common",
                                           "pwd",
                                           "zip python.zip python",
-                                          "cd ..",
-                                          "pwd"
+                                          "cd .."
                                           ]
                                 )
                                 
