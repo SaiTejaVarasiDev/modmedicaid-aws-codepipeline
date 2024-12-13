@@ -31,7 +31,7 @@ class HealthConnectorCdkStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        table_name = 'MOD_Medicaid'
+        table_name = construct_id+'MOD_Medicaid'
         table = dynamodb_.TableV2(
             self,
             'HealthConnectorMODMedicaidTable',
@@ -45,7 +45,7 @@ class HealthConnectorCdkStack(Stack):
             )
         )
 
-        table_name2 = 'MOD_Medicaid_History'
+        table_name2 = construct_id+'MOD_Medicaid_History'
         table2 = dynamodb_.TableV2(
             self,
             'HealthConnectorMODMedicaidHistoryTable',
