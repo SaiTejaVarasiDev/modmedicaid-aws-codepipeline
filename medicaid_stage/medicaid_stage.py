@@ -5,8 +5,8 @@ from constructs import Construct
 from health_connector_cdk.health_connector_cdk_stack import HealthConnectorCdkStack
 
 class MediciaidPipelineStage(Stage):
-    def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
+    def __init__(self, scope: Construct, construct_id: str, stack_name: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        medicaidstack = HealthConnectorCdkStack(self,'MODMediciaidStack')
+        medicaidstack = HealthConnectorCdkStack(self,'MODMediciaidStack',stack_name=stack_name)
         

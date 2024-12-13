@@ -37,6 +37,6 @@ class MedicaidPipelineStack(Stack):
                                 
                                 )
         
-        pipeline.add_stage(MediciaidPipelineStage(self, "dev"
+        pipeline.add_stage(MediciaidPipelineStage(self, "dev",stack_name="dev",
                                         #  env=Environment()
                                         ))

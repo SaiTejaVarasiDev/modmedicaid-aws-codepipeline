@@ -28,10 +28,10 @@ class ApiScope():
 
 class HealthConnectorCdkStack(Stack):
 
-    def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
+    def __init__(self, scope: Construct, construct_id: str,stack_name: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        table_name = scope+'MOD_Medicaid'
+        table_name = stack_name+'MOD_Medicaid'
         table = dynamodb_.TableV2(
             self,
             'HealthConnectorMODMedicaidTable',
@@ -45,7 +45,7 @@ class HealthConnectorCdkStack(Stack):
             )
         )
 
-        table_name2 = scope+'MOD_Medicaid_History'
+        table_name2 = stack_name+'MOD_Medicaid_History'
         table2 = dynamodb_.TableV2(
             self,
             'HealthConnectorMODMedicaidHistoryTable',
