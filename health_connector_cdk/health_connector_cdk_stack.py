@@ -30,8 +30,14 @@ class HealthConnectorCdkStack(Stack):
 
     def __init__(self, scope: Construct, construct_id: str,stack_name: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
-
-        table_name = stack_name+'MOD_Medicaid'
+        if stack_name=="dev":
+            self.stage_name = "DEV"
+        elif stack_name == "prod":
+            self.stage_name = "PROD"
+        elif stack_name == "test":
+            self.stage_name = "TEST"
+        
+        table_name = self.stage_name+'-'+'MOD_Medicaid'
         table = dynamodb_.TableV2(
             self,
             'HealthConnectorMODMedicaidTable',
@@ -45,7 +51,7 @@ class HealthConnectorCdkStack(Stack):
             )
         )
 
-        table_name2 = stack_name+'MOD_Medicaid_History'
+        table_name2 = self.stage_name+'-'+'MOD_Medicaid_History'
         table2 = dynamodb_.TableV2(
             self,
             'HealthConnectorMODMedicaidHistoryTable',
@@ -267,7 +273,7 @@ class HealthConnectorCdkStack(Stack):
         #     )
         # )
 
-        api_stage_name = 'prod'
+        api_stage_name = self.stage_name
         api = apigw_.RestApi(
             self,
             'HealthConnectorApi',
@@ -481,7 +487,7 @@ class HealthConnectorCdkStack(Stack):
             auto_verify=cognito_.AutoVerifiedAttrs(
                 email=True
             ),
-            user_pool_name='health_connector_user_pool',
+            user_pool_name=self.stage_name+'-'+'health_connector_user_pool',
             self_sign_up_enabled=False,
             sign_in_aliases=cognito_.SignInAliases(
                 email=True
