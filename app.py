@@ -3,12 +3,11 @@ import os
 
 import aws_cdk as cdk
 
-# from medicaid_pipeline.medicaid_pipeline import MedicaidPipelineStack
-from health_connector_cdk.health_connector_cdk_stack import HealthConnectorCdkStack
+from medicaid_pipeline.medicaid_pipeline import MedicaidPipelineStack
 
 
 app = cdk.App()
-# MedicaidPipelineStack(app, "MedicaidPipelineStack",
+MedicaidPipelineStack(app, "MedicaidPipelineStack",
     # If you don't specify 'env', this stack will be environment-agnostic.
     # Account/Region-dependent features and context lookups will not work,
     # but a single synthesized template can be deployed anywhere.
@@ -21,11 +20,10 @@ app = cdk.App()
     # Uncomment the next line if you know exactly what Account and Region you
     # want to deploy the stack to. */
 
-    # env=cdk.Environment(account='443370714691', region='ap-south-1'),
+    env=cdk.Environment(account='443370714691', region='ap-south-1'),
 
     # For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html
-    # )
+    )
 
-HealthConnectorCdkStack(app,"medicaidstack",env=cdk.Environment(account='443370714691', region='ap-south-1'),stack_name="dev")
 
 app.synth()
